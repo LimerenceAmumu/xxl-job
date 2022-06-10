@@ -24,6 +24,9 @@ public class JobTriggerPoolHelper {
     private ThreadPoolExecutor fastTriggerPool = null;
     private ThreadPoolExecutor slowTriggerPool = null;
 
+    /**
+     * 容器创建的时候就执行了
+     */
     public void start(){
         fastTriggerPool = new ThreadPoolExecutor(
                 10,
@@ -79,6 +82,7 @@ public class JobTriggerPoolHelper {
         // choose thread pool
         ThreadPoolExecutor triggerPool_ = fastTriggerPool;
         AtomicInteger jobTimeoutCount = jobTimeoutCountMap.get(jobId);
+        // 任务超时次数大于10 切换为slowTriggerPool
         if (jobTimeoutCount!=null && jobTimeoutCount.get() > 10) {      // job-timeout 10 times in 1 min
             triggerPool_ = slowTriggerPool;
         }

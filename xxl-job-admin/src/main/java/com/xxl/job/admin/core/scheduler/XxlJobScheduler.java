@@ -20,6 +20,14 @@ public class XxlJobScheduler  {
     private static final Logger logger = LoggerFactory.getLogger(XxlJobScheduler.class);
 
 
+    /**
+     * 初始化工作
+     *  - i18n
+     *  - JobTriggerPoolHelper  初始化 fastTriggerPool 和slowTriggerPool
+     *  -
+     *
+     * @throws Exception
+     */
     public void init() throws Exception {
         // init i18n
         initI18n();

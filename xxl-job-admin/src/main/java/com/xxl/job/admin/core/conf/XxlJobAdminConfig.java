@@ -16,6 +16,8 @@ import java.util.Arrays;
 /**
  * xxl-job config
  *
+ * 初始化调度器XxlJobScheduler 初始化线程池
+ * 注入一些DAO 和一些组件比如 邮件发送
  * @author xuxueli 2017-04-28
  */
 
@@ -35,7 +37,6 @@ public class XxlJobAdminConfig implements InitializingBean, DisposableBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         adminConfig = this;
-
         xxlJobScheduler = new XxlJobScheduler();
         xxlJobScheduler.init();
     }
